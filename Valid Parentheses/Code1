@@ -1,0 +1,43 @@
+class Solution {
+    public boolean isValid(String s) {
+        ArrayList<Character> arr=new ArrayList();
+        int i=0;
+        Character a=' ';
+        
+        while(i<s.length()){
+            Character c=s.charAt(i);
+            
+            if(c=='('||c=='{'||c=='['){
+                arr.add(c);
+                a=arr.get(arr.size()-1);
+            }
+            
+            else if((c==')'||c=='}'||c==']') && arr.size()==0)
+                return false;
+            
+            else if(c==')' && a.equals('('))  
+                arr.remove(arr.lastIndexOf('('));
+
+            
+            else if(c=='}' && a.equals('{'))
+                arr.remove(arr.lastIndexOf('{'));
+            
+            else if(c==']' && a=='[')
+                arr.remove(arr.lastIndexOf('['));
+    
+            else  
+                return false;
+            
+            if(arr.size()!=0)
+                a=arr.get(arr.size()-1);
+            else a=' ';
+            
+            i++;
+        }
+        
+        if(arr.size()!=0)
+            return false;
+        else return true;
+        
+    }
+}
