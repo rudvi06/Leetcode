@@ -1,0 +1,31 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int flag=-1;
+        int j=0;
+        int i=0;
+        int n=needle.length();
+        int h=haystack.length();
+        
+        if(n==0){
+            return 0;
+        }
+        
+        for(j=0;i<n && j<h;j++){
+            if(needle.charAt(i)==haystack.charAt(j)){
+                flag++;
+                i++;
+            }
+            else if(i!=0 ){
+                j=j-i;
+                i=0;
+                flag=-1;
+            }
+            
+        }
+        
+        if(flag==-1 || n>h || flag!=n-1 )
+            return -1;
+        
+        return j-i;
+    }
+}
