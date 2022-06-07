@@ -1,0 +1,58 @@
+class Solution {
+    public String addBinary(String a, String b) {
+        String str="";
+        int carry=0,temp=0;
+        int x,y;
+        int i=a.length()-1;
+        int j=b.length()-1;
+        
+        while(i>=0 && j>=0){
+
+            x=Integer.parseInt(String.valueOf(a.charAt(i)));
+            y=Integer.parseInt(String.valueOf(b.charAt(j)));
+           
+            temp=x+y+carry;
+            carry=0;
+            
+            if(temp>1){
+                temp=temp % 2;
+                carry=1;
+            }
+            str=String.format("%d",temp)+str;
+            i--;
+            j--;
+        }
+        
+        while(j>=0){
+            
+            y=Integer.parseInt(String.valueOf(b.charAt(j)));
+            temp=y+carry;
+            carry=0;
+            
+            if(temp>1){
+                temp=temp%2;
+                carry=1;
+            }
+            str=String.format("%d",temp)+str;
+            j--;
+        }
+        
+        while(i>=0){
+            
+            x=Integer.parseInt(String.valueOf(a.charAt(i)));
+            temp=x+carry;
+            carry=0;
+            
+            if(temp>1){
+                temp=temp%2;
+                carry=1;
+            }
+            str=String.format("%d",temp)+str;
+            i--;
+        }
+        if(carry==1)
+            str=String.format("%d",carry)+str;
+        
+        return str;
+    }
+}
