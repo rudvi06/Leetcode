@@ -1,0 +1,27 @@
+class Solution {
+    public int mySqrt(int x) {
+    
+        long square=0;
+        long low=0;
+        long high=x;
+        long mid=(low+high)/2;
+        
+        while(low<=high){
+        
+            square=mid*mid;
+        
+            if(square==x)
+                break;
+                
+            else if(square>x)
+                high=mid-1;
+                
+            else
+                low=mid+1;
+            
+            mid=(low+high)/2;
+        }
+        
+        return (int)mid;
+    }
+}
