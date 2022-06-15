@@ -1,0 +1,20 @@
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        boolean flag;
+        flag=mirror(root.left,root.right);
+        return flag;
+    }
+    public boolean mirror(TreeNode p, TreeNode q){
+        if(p==null && q==null)
+            return true;
+        if(p!=null && q==null || p==null && q!=null)
+            return false;
+        if(p.val!=q.val)
+            return false;
+        if(!mirror(p.left,q.right))
+            return false;
+        if(!mirror(p.right,q.left))
+            return false;
+        return true;
+    }
+}
