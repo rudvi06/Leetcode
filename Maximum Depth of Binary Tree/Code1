@@ -1,0 +1,29 @@
+class Solution {
+    public int maxDepth(TreeNode root) {
+        
+        int height=0;
+        height=calculateHeight(root,height, 0);
+        return height;
+        
+    }
+    
+    public int calculateHeight(TreeNode root,int sum,int h){
+        
+        if(root==null)
+            return h;
+        
+        sum=sum+1;
+        
+        h=calculateHeight(root.left,sum,h);
+        
+        if(h<sum)
+            h=sum;
+        
+        h=calculateHeight(root.right,sum,h);
+        
+        if(h<sum)
+            h=sum;
+        
+        return h;
+    }
+}
