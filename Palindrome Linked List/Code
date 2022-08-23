@@ -1,0 +1,36 @@
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        int n=0;
+        int i=0;
+        ListNode start=head;
+        ListNode curr;
+        
+        while(head!=null){
+            n++;
+            head=head.next;
+        }
+        
+        head=null;
+        
+        while(i != n/2){
+            curr=new ListNode(start.val);
+            curr.next=head;
+            head=curr;
+            start=start.next; 
+            i++;
+        }
+        
+        if(n%2!=0){
+            start=start.next;
+        }
+        
+        while(start!=null){
+            if(start.val!=head.val){
+                return false;
+            }
+            start=start.next;
+            head=head.next;
+        }
+        return true;
+    }
+}
