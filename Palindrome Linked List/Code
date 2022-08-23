@@ -11,8 +11,9 @@ class Solution {
         }
         
         head=null;
+        int mid=n/2;
         
-        while(i != n/2){
+        while(i != mid){
             curr=new ListNode(start.val);
             curr.next=head;
             head=curr;
