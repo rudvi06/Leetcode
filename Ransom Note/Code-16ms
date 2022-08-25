@@ -1,0 +1,24 @@
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        List<Character> list = new ArrayList<>();
+        int i=magazine.length()-1;
+        int j=ransomNote.length()-1;
+        char ransom;
+        
+        while(i>=0){
+            list.add(magazine.charAt(i));
+            i--;
+        }
+        
+        while(j>=0){
+            ransom=ransomNote.charAt(j);
+            
+            if(list.indexOf(ransom)<=-1)
+                return false;
+        
+            list.remove(list.indexOf(ransom));
+            j--;
+        }
+        return true;
+    }
+}
