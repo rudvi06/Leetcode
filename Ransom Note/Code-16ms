@@ -11,12 +11,12 @@ class Solution {
         }
         
         while(j>=0){
-            ransom=ransomNote.charAt(j);
+            ransom=list.indexOf(ransomNote.charAt(j));
             
-            if(list.indexOf(ransom)<=-1)
+            if(ransom<=-1)
                 return false;
         
-            list.remove(list.indexOf(ransom));
+            list.remove(ransom);
             j--;
         }
         return true;
