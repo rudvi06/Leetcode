@@ -1,0 +1,22 @@
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        Map<Character,Integer> map=new HashMap<>();
+        int i=magazine.length()-1;
+        int j=ransomNote.length()-1;
+        char ransom;
+        char mag;
+        while(i>=0){
+            mag=magazine.charAt(i);
+            map.put(mag,map.getOrDefault(mag,0)+1);
+            i--;
+        }
+        while(j>=0){
+            ransom=ransomNote.charAt(j);
+            if(map.getOrDefault(ransom,0) <= 0 )
+                return false;
+            map.put(ransom,map.get(ransom)-1);
+            j--;
+        }
+        return true;
+    }
+}
