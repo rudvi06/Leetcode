@@ -1,0 +1,21 @@
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        
+        ListNode res=new ListNode();
+        ListNode temp;
+        
+        if(head==null)
+            return false;
+        
+        while(head.next!=null){
+            temp=head.next;
+            head.next=res;
+            head=temp;
+        }
+        
+        if(head.toString().equals(res.toString()))
+            return true;
+            
+        return false;
+    }
+}
