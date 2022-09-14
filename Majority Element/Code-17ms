@@ -1,0 +1,21 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        
+        Map<Integer, Integer> map= new HashMap<>();
+        int n=nums.length;
+        int i;
+        
+        for(i=0;i<n;i++){
+            map.put(nums[i],map.getOrDefault(nums[i],0)+1);
+        }
+        
+        int max=Collections.max(map.values());
+        
+        for(Integer key : map.keySet()){
+            if(map.get(key)==max)
+                return key;
+        }
+        
+        return 0;
+    }
+}
