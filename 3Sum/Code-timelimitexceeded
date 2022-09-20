@@ -1,0 +1,59 @@
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Set<List<Integer>> set = new HashSet<>();
+        List list;
+        int sum=0;
+        int n=nums.length;
+        int i=-1,j=-1,k=-1;
+        for(int a=0;a<n-2;a++){
+            i=a;
+            sum=sum+nums[i];
+            //System.out.println(" i :" +i +",       nums[i] : "+ nums[i]);
+            //System.out.println(" sum :" +sum);
+            
+            j=a+1;
+            sum=sum+nums[j];
+            
+            for(int b=a+2;b<n;b++){
+                //j=a+1;
+                //sum=sum+nums[j];
+                k=b;
+                sum=sum+nums[k];
+                //System.out.println(" j :" +j+",       nums[j] : "+ nums[j]);
+                //System.out.println(" k :" +k+",       nums[k] : "+ nums[k]);
+                //System.out.println(" sum :" +sum);
+                
+                if(sum==0){
+                    list=Arrays.asList(nums[i],nums[j],nums[k]);
+                    Collections.sort(list);
+                    //System.out.println(" i : "+i+" j :" +j+" k : "+k);
+                    
+                    set.add(list);
+                 
+                    j=j+1;
+                    b=j;
+                    sum=sum+nums[i]+nums[j];
+                }
+                
+                else{
+                    sum=sum-nums[k];
+                    //System.out.println(" sum :" +sum);
+                }
+                
+                if(b==n-1 && j<n-2)
+                {
+                    sum=sum-nums[j];
+                    //System.out.println(" sum :" +sum);
+                    j=j+1;
+                    b=j;
+                    sum=sum+nums[j];
+                } 
+            }
+            sum=0;
+        }
+        List<List<Integer>> listt=new ArrayList<>();
+        listt.addAll(set);
+        return listt;
+ 
+    }
+}
