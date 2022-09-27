@@ -1,0 +1,16 @@
+class Solution {
+    
+    ListNode prev=null;
+    ListNode temp;
+    
+    public ListNode reverseList(ListNode head) {
+        
+        while(head!=null){
+            temp=head.next;
+            head.next=prev;
+            prev=head;
+            head=temp;
+        }
+        return prev;
+    }
+}
