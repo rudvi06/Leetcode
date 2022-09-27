@@ -1,0 +1,17 @@
+class Solution {
+    
+    ListNode prev=null;
+    ListNode temp;
+    
+    public ListNode reverseList(ListNode head) {
+        
+        if(head==null)
+            return head;
+        
+        temp=head.next;
+        head.next=prev;
+        prev=head;
+        reverseList(temp);
+        return prev;
+    }
+}
