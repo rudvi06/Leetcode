@@ -4,9 +4,9 @@ class Solution {
         int max=0;
         int maxyear=0;
       
-        for(int j=0;j<logs.length;j++){      
-            arr[logs[j][0]-1950]++;
-            arr[logs[j][1]-1950]--;
+        for(int i=0;i<logs.length;i++){      
+            arr[logs[i][0]-1950]++;
+            arr[logs[i][1]-1950]--;
         }
         
         for(int i=1;i<101;i++){
