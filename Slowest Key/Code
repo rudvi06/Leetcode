@@ -3,12 +3,11 @@ class Solution {
     
         int max=releaseTimes[0];
         char st=keysPressed.charAt(0);
+        int diff=0;
         for(int i=1;i<releaseTimes.length;i++){
-            if(releaseTimes[i]-releaseTimes[i-1]>max){
-                max=releaseTimes[i]-releaseTimes[i-1];
-                st=keysPressed.charAt(i);
-            }
-            else if(releaseTimes[i]-releaseTimes[i-1]==max && st<keysPressed.charAt(i)){
+            diff=releaseTimes[i]-releaseTimes[i-1];
+            if(diff>max || diff==max && st<keysPressed.charAt(i)){
+                max=diff;
                 st=keysPressed.charAt(i);
             }
         }
