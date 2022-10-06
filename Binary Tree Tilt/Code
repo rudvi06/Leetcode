@@ -1,0 +1,20 @@
+class Solution {
+    
+    public int findTilt(TreeNode root) {
+        List<Integer> ds= new ArrayList<>();
+        int sum=0;
+        func(root,sum,ds);
+        
+        for(Integer i:ds)
+            sum=sum+i;
+        return sum;
+    }
+    public int func(TreeNode root,int sum, List<Integer> ds){
+        if(root == null)
+            return 0;
+        int left = func(root.left,sum,ds);
+        int right = func(root.right,sum,ds);
+        ds.add(Math.abs(left-right));
+        return (root.val+left+right);
+    }
+}
