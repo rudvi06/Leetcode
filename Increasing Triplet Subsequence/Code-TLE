@@ -1,0 +1,22 @@
+class Solution {
+    public boolean increasingTriplet(int[] nums) {
+        int i=0,j=-1,k=-1;
+        for(int a=0;a<nums.length;a++){
+            i=a;
+            for(int b=a+1;b<nums.length;b++){
+                if(j==-1){
+                    if(nums[i]<nums[b])
+                        j=b;
+                }
+                else{
+                    if(nums[j]<nums[b])
+                        return true;
+                    else if(nums[i]<nums[b])
+                        j=b;
+                }
+            }
+            j=-1;
+        }
+        return false;
+    }
+}
