@@ -1,7 +1,7 @@
 class Solution {
     public ListNode deleteMiddle(ListNode head) {
         ListNode start=head;
-        ListNode temp;
+        ListNode temp=head;
         int count=0;
         
         while(head!=null){
@@ -12,24 +12,21 @@ class Solution {
         if(count==1)
             return null;
         
-        int mid=count/2;
+        int mid=count/2 - 1;
         count=0;
         head=start;
         
         while(head!=null){
             
-            if(count==mid-1){
+            if(count==mid){
                 temp=head.next;
                 head.next=head.next.next;
-                head=temp;
-            }
-            else if(count==mid){
-                head.next=null;
                 break;
             }
             else head=head.next;
             count++;
         }
+        temp.next=null;
         return start;
     }
 }
