@@ -1,0 +1,35 @@
+class Solution {
+    public ListNode deleteMiddle(ListNode head) {
+        ListNode start=head;
+        ListNode temp;
+        int count=0;
+        
+        while(head!=null){
+            count++;
+            head=head.next;
+        }
+        
+        if(count==1)
+            return null;
+        
+        int mid=count/2;
+        count=0;
+        head=start;
+        
+        while(head!=null){
+            
+            if(count==mid-1){
+                temp=head.next;
+                head.next=head.next.next;
+                head=temp;
+            }
+            else if(count==mid){
+                head.next=null;
+                break;
+            }
+            else head=head.next;
+            count++;
+        }
+        return start;
+    }
+}
