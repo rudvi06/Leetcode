@@ -1,0 +1,37 @@
+class Solution {
+    public boolean closeStrings(String word1, String word2) {
+        
+        if(word1.length()!=word2.length())
+            return false;
+        
+        int[] map1 = new int[26];
+        int[] map2 = new int[26];
+        
+        for(int i=0;i<word1.length();i++){
+            map1[word1.charAt(i)-'a']++;
+            map2[word2.charAt(i)-'a']++;
+          }
+        
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
+        
+        for(int i=0;i<26;i++){
+            if(map1[i]>0 && map2[i]>0){
+                list1.add(map1[i]);
+                list2.add(map2[i]);
+            }
+            else if(map1[i]==0 && map2[i]==0)
+                continue;
+            else
+                return false;
+        }
+        
+        Collections.sort(list1);
+        Collections.sort(list2);
+                                          
+        if(!list1.equals(list2))
+            return false;
+        
+        return true;
+    }
+}
